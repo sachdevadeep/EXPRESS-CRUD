@@ -1,0 +1,98 @@
+hmm ek rest api create krrre jiske under json data ko store krenge jo user se communicate krega 
+
+pehlli problem hme data chahiye data mongo db se aata lkin hmm externally provide krenge mockaro.com fake data generate krta
+jo server hota hai vo  hybrid server hai 
+
+agr /api/ hoga tu vo api data json data return krega agr /api/ nhi hai to vo html document return krega
+
+express midlle ware -IMP Topic
+
+middle ware hmare pas ek client ye client ek request krta hai ye request kiya on GEt /users ye hmare express server pr aayegi to vo dekhegi konsa route run krna hai app.get(/users)
+uske bad vo paricular block jis pr request hui hai vo hme res send krega 
+
+lkin miidle me hmare pas clien thai 
+to hmare pas miidle ware atte jaise beech me koi insan use middleware khte hai 
+ye miidle ware hmare fnc ko execute krega fnc (app.get)
+
+jo hmari request hai vo pehle middleware ke pas jayegi 
+miidleware ksii bhi tre ki processing kr skta ani processing validation checking 
+agr ise lgeta hai sb okay tu request ko aage send kr dega aur block response send kr dega 
+agr ise lga koi glti hai to req  ko return kr dega aage fnc tk ni bechenga execute hone ke liye
+
+Middleware ek fnc hai jo hrr req aur reponse pr execute krta hai 
+
+ek code me multiple middleware ho skte hai
+hmm apne middle ware bna skte hai using app.use()
+iske undr hmm apna handler fnc dete hai 
+
+handler fnc= (req,res,next) =>{
+    next  = jo pure path me next middleware hai uska reference
+    jaise hmne app.route ka use kiyanto yr route ko point krra
+
+    jaise mere code me mene phle middleware bnaya 
+    app.use(express.urlencoded({extended:false}));
+    ye upr hi bnaya ye apna kam processing khatam rkr next ko call krega iske bad mene middleware ban rkha hai 
+
+
+    app.use(req,res,next)=>{
+
+        console.log("hello form middlle1);
+    }
+    abh jmm me server restart krkr postman me get request krunga to vo loadd hi to rhega req ja hi ni payegi ye atka dega request ko aage jane ke liye terminall pr print hoga hello from middle 1 
+    req aage jayegi hi ni 
+
+    iske liye hmm next() fnc ka use krenge jo req ko aage forward krega aur res return block se ju execute krana hai 
+
+
+
+}
+
+jo upr vala miiddleware hai express.urlencoded ye  frontend se form data aar ha hai sue object me convert krta hai  
+fir req ka access to haii hi fir req.body ke under data dal kr deta hai 
+
+abh manle mujhe future user ki credit card details chahiyen
+
+uses 
+1. execute any code
+2. make changes in req and responses objects jaise pr updata krna req. krkr
+3. Call the next middleware fnc in the stack 
+
+Headers  
+
+jaise sender ne recievr pr mail bheja  to mail ke under jo hai hai o data hai mail hmara 
+request hai 
+mail ke upr from address , reciever addrss au conten type of data like json ya weight of packet lika hota hai ise headers khte hai 
+
+An http header is a field of an aHTTP request or response additional context and metadata about the request or response
+
+AB hmm apne headers bhi bnusing a skte hai using .setHaeder
+hmne apne cutom headers bnaye hmm postman me jkr check krskte hai res headrer me jo hmne bnaya vo dikhega 
+
+jb hme apna cutsom headre bnana hai tu uske aage X lga do client smjhega ki custom header built in Header hai 
+
+STATUS CODE HTTP response
+
+HTTP RESPONSE STATUS CODE
+
+HTTP response sttus code indicate wheather a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+Informational responses(100-199)
+Sucessful responses (200-299)
+
+Redirection  messages(300-399)
+
+Client error responses(400-499)
+
+Server error responses(500-599)
+
+
+menen nodemon install agr hmm koi change krte tu hme server dubara se restart krte hai iske liye hhmne nodemon install kiya jo appne aap hi changes pr server restart kr lega 
+
+post method 200 successfull upr likha agr 201 to post pr create ho jayega 
+
+
+
+
+
+
+
